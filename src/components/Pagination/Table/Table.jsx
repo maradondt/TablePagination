@@ -5,8 +5,12 @@ import styles from './Table.module.less';
 const Table = (props) => {
   const {
     data,
-    handleSort,
+    requestSort,
   } = props;
+
+  const handleSort = (field) => () => {
+    requestSort(field);
+  };
 
   const renderThead = (data) => {
     const headers = data.reduce(
@@ -16,12 +20,12 @@ const Table = (props) => {
     return (
       <thead>
         <tr>
-          {headers.map((name) => <td
+          {headers.map((name) => <th
             onClick={handleSort(name)}
             key={_.uniqueId()}
           >
             {name}
-          </td>)}
+          </th>)}
         </tr>
       </thead>
     );

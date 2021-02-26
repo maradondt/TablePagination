@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as routes from './routes';
 import './App.less';
-import Table from './components/Pagination/Table/Table';
+import Table from './components/Pagination/Pagination';
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,7 +27,7 @@ function App() {
       <main>
         <Table
           data={data}
-          countItems={50}
+          loadingProcessState={loadingProcessState}
         />
       </main>
     </div>
