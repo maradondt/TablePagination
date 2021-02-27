@@ -1,35 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import _ from 'lodash';
+import React from 'react';
 import Table from './Table/Table';
+import { useFiltrableData } from './useFiltrableData';
+import { useSortableData } from './useSortableData';
 
 const Pagination = (props) => {
+  const { data } = props;
+
   const {
-    data,
-    loadingProcessState,
-  } = props;
+    filtredData,
+    filterValue,
+    handleFilterChange
+  } = useFiltrableData(data);
+  const { items: tableData, requestSort } = useSortableData(filtredData);
 
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: null});
-  const [sortedData, setSortedData] = useState([]);
-
-  useEffect(() => {
-    setSortedData(data);
-  }, [loadingProcessState, data]);
-
-  const requestSort = (key) => {
-    if (sortConfig.key === key && sortConfig.direction === 'asc') {
-      setSortConfig({ key, direction: 'desc' });
-    } else {
-      setSortConfig({ key, direction: 'asc' });
-    }
-  };
-
-  useEffect(() => {
-    const { key, direction } = sortConfig;
-    const newData = _.orderBy(data, (o) => o[key], direction);
-    setSortedData(newData);
-  }, [sortConfig, data]);
-
-  return <Table data={sortedData} requestSort={requestSort} />
+  return (
+    <>
+      <input
+        type="text"
+        name="filter"
+        id="filter"
+        placeholder="Enter a query to filter"
+        value={filterValue}
+        onChange={handleFilterChange}
+      />
+      <Table data={tableData} requestSort={requestSort} />
+    </>
+  );
 };
 
 export default Pagination;

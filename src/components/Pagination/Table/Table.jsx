@@ -10,7 +10,7 @@ const Table = (props) => {
 
   const handleSort = (field) => () => {
     requestSort(field);
-  };
+  }
 
   const renderThead = (data) => {
     const headers = data.reduce(
