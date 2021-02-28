@@ -1,0 +1,41 @@
+@import '../../less/variables.less';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filter {
+  position: relative;
+
+  &-input {
+    margin-bottom: 20px;
+    padding: 15px;
+    padding-left: 50px;
+    border: none;
+    border-radius: 5px;
+
+    color: lighten(@main, 20%);
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px 5px @light-gray;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+
+    width: 22px;
+    height: 25px;
+
+    & svg {
+      fill: lighten(@main, 50%);
+    }
+  }
+}

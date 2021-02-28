@@ -1,0 +1,43 @@
+@import '../../less/variables.less';
+
+.table {
+  margin: 0 auto;
+  border-spacing: 0 10px;
+
+  color: @main;
+
+  &-header {
+    text-transform: uppercase;
+
+    background-color: @light-gray;
+
+    & th {
+      padding-top: 10px;
+      padding-right: 5px;
+      padding-bottom: 10px;
+      padding-left: 5px;
+
+      cursor: pointer;
+    }
+  }
+}
+
+.row {
+  margin-bottom: 5px;
+  border-radius: 5px;
+
+  background-color: @background;
+  box-shadow: 0 0 20px 5px @light-gray;
+
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    background-color: none;
+    box-shadow: 0 0 20px 10px @light-gray;
+    transform: scale(1.02);
+  }
+}
+
+.cell {
+  padding: 10px;
+}

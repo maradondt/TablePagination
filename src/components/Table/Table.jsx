@@ -18,7 +18,7 @@ const Table = (props) => {
       []);
 
     return (
-      <thead>
+      <thead className={styles['table-header']}>
         <tr>
           {headers.map((name) => <th
             onClick={handleSort(name)}

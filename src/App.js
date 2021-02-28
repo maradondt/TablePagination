@@ -23,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        Pagination
       </header>
       <main>
         <Table
