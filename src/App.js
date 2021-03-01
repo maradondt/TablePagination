@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as routes from './routes';
-import './App.less';
-import Pagination from './components/Pagination/Pagination';
+import styles from './App.module.less';
+import TablePagination from './components/TablePagination/TablePagination';
 
 function App() {
   const [data, setData] = useState([]);
@@ -21,12 +21,12 @@ function App() {
   }, [loadingProcessState]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        Pagination
+    <div className={styles.App}>
+      <header className={styles['App-header']}>
+        Table Pagination
       </header>
       <main>
-        <Pagination
+        <TablePagination
           data={data}
           pageLimit={10}
         />

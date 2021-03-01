@@ -7,8 +7,8 @@ import { useSelectData } from './useSelectData';
 import PaginationNav from '../PaginationNav/PaginationNav';
 import SearchInput from '../ui/SearchInput/SearchInput';
 
-const Pagination = (props) => {
-  const { data, pageLimit } = props;
+const TablePagination = (props) => {
+  const { data, pageLimit = 50 } = props;
 
   const {
     filtredData,
@@ -51,4 +51,4 @@ const Pagination = (props) => {
   );
 };
 
-export default React.memo(Pagination);
+export default React.memo(TablePagination);
