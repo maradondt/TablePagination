@@ -59,4 +59,4 @@ TablePagination.propTypes = {
   pageLimit: PropTypes.number,
 };
 
-export default React.memo(TablePagination);
+export default TablePagination;

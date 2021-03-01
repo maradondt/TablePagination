@@ -22,14 +22,16 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <header className={styles['App-header']}>
-        Table Pagination
-      </header>
-      <main>
-        <TablePagination
-          data={data}
-        />
+      <header className={styles['App-header']}>Table Pagination</header>
+      <main className={styles['App-main']}>
+        <TablePagination data={data} />
       </main>
+      <footer className={styles['App-footer']}>
+        <span>© Vladimir Zhigalev</span>
+        <a href="https://github.com/maradondt" className={styles.link}>
+          github.com/maradondt
+        </a>
+      </footer>
     </div>
   );
 }
