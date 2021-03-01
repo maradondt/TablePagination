@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import { useMemo, useState } from 'react';
 
-export const useSortableData = (items, config = null) => {
+export const useSortableData = (
+  items,
+  config = { key: null, direction: 'asc' }
+) => {
   const [sortConfig, setSortConfig] = useState(config);
 
   const sortedItems = useMemo(() => {
@@ -13,9 +16,11 @@ export const useSortableData = (items, config = null) => {
   }, [items, sortConfig]);
 
   const requestSort = (key) => {
-    if (sortConfig &&
+    if (
+      sortConfig &&
       sortConfig.key === key &&
-      sortConfig.direction === 'asc') {
+      sortConfig.direction === 'asc'
+    ) {
       setSortConfig({ key, direction: 'desc' });
     } else {
       setSortConfig({ key, direction: 'asc' });

@@ -9,7 +9,7 @@ function App() {
   const [loadingProcessState, setLoadingProcessState] = useState('loading');
 
   useEffect(() => {
-    axios.get(routes.postsPath())
+    axios.get(routes.commmentsPath())
       .then((response) => {
         setData(response.data);
         setLoadingProcessState('idle');

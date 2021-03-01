@@ -16,7 +16,7 @@ const Pagination = (props) => {
     handleFilterChange
   } = useFiltrableData(data);
 
-  const { items: sortedData, requestSort } = useSortableData(filtredData);
+  const { items: sortedData, requestSort, sortConfig } = useSortableData(filtredData);
   const { currentData, currentPage, onPageChanged } = useSelectData(sortedData, pageLimit);
 
 
@@ -31,13 +31,13 @@ const Pagination = (props) => {
         />
         <PaginationNav
           totalRecords={sortedData.length}
-          pageLimit={10}
+          pageLimit={pageLimit}
           pageNeighbours={1}
           onPageChanged={onPageChanged}
           page={currentPage}
         />
       </div>
-      <Table data={currentData} requestSort={requestSort} />
+      <Table data={currentData} requestSort={requestSort} sortConfig={sortConfig} />
       <div className={styles['controlls_bottom']}>
         <PaginationNav
           totalRecords={sortedData.length}

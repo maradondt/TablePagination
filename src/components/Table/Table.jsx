@@ -1,26 +1,37 @@
 import React from 'react';
 import _ from 'lodash';
+import cn from 'classnames';
 import styles from './Table.module.less';
 
 const Table = (props) => {
   const {
     data,
     requestSort,
+    sortConfig: {
+      key,
+      direction,
+    }
   } = props;
 
   const handleSort = (field) => () => {
     requestSort(field);
   }
 
-  const renderThead = (data) => {
+  const renderThead = () => {
     const headers = data.reduce(
       (acc, item) => [...new Set([...acc, ...Object.keys(item)])],
       []);
+
+    const getSortedClasses = (name) => cn({
+      [styles.sorted]: name === key,
+      [styles[direction]]: name === key,
+    });
 
     return (
       <thead className={styles['table-header']}>
         <tr>
           {headers.map((name) => <th
+            className={getSortedClasses(name)}
             onClick={handleSort(name)}
             key={_.uniqueId()}
           >

@@ -1,16 +1,21 @@
 @import '../../../less/variables.less';
+@import '../../../less/mixins.less';
 
 input {
+  box-sizing: border-box;
   padding: 15px;
   padding-left: 50px;
-  border: none;
-  border-radius: 5px;
+
+  border: 2px solid @light-gray;
+  border-radius: 4px;
 
   color: lighten(@main, 20%);
-  font-size: 16px;
 
   &:focus {
+    border: 2px solid transparent;
+
     outline: none;
-    box-shadow: 0 0 5px 5px @light-gray;
+    // box-shadow: 0 0 10px 2px @light-gray;
+    .shadow();
   }
 }

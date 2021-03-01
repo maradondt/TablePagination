@@ -83,5 +83,5 @@ export const usePagination = (
     gotoPage(currentPage + pageNeighbours * 2 + 1);
   };
 
-  return { pages, currentPage, handleClick, handleMoveLeft, handleMoveRight };
+  return { pages, currentPage, handleClick, handleMoveLeft, handleMoveRight, totalPages };
 };
