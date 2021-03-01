@@ -43,6 +43,25 @@ const Table = (props) => {
     </tbody>
   );
 
+  if(data.length === 0) {
+    return (
+      <table className={`${styles.table} ${styles['table-empty']}`}>
+        <thead className={styles['table-header']}>
+          <tr>
+          <th>
+           No find Data
+          </th>
+          </tr>
+        </thead>
+        <tr className={styles.row} key={_.uniqueId()}>
+          <td className={styles.cell}>
+            Please change you query
+          </td>
+        </tr>
+      </table>
+    );
+  }
+
   return (
     <table className={styles.table}>
       {renderThead(data)}

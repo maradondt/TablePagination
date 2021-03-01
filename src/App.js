@@ -29,11 +29,10 @@ function App() {
         <Pagination
           data={data}
           pageLimit={10}
-          loadingProcessState={loadingProcessState}
         />
       </main>
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);
