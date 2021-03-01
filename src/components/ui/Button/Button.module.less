@@ -1,0 +1,22 @@
+@import '../../../less/variables.less';
+
+.button {
+  padding: 10px;
+  border: none;
+
+  color: @main;
+
+  background: @light-gray;
+
+  cursor: pointer;
+
+  &:hover {
+    background: darken(@light-gray, 10%);
+  }
+
+  &:disabled {
+    color: @light-gray;
+
+    background: @primary;
+  }
+}

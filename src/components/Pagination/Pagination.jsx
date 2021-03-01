@@ -7,19 +7,13 @@ import { useSelectData } from './useSelectData';
 import PaginationNav from '../PaginationNav/PaginationNav';
 
 const Pagination = (props) => {
-  const { data } = props;
+  const { data, pageLimit } = props;
 
   const {
     filtredData,
     filterValue,
     handleFilterChange
   } = useFiltrableData(data);
-
-  const [pageLimit, setPageLimit] = useState('10');;
-  const handlePageLimit = ({ target }) => {
-    setPageLimit(target.value || 1);
-    onPageChanged(1);
-  };
 
   const { items: sortedData, requestSort } = useSortableData(filtredData);
   const { currentData, currentPage, onPageChanged } = useSelectData(sortedData, pageLimit);
@@ -28,7 +22,6 @@ const Pagination = (props) => {
 
   return (
     <div className={styles.wrapper}>
-    <input type="number" value={pageLimit || 1} onChange={handlePageLimit} />
       <div className={styles.filter}>
         <span className={styles['filter-icon']}>
           <svg
@@ -53,7 +46,7 @@ const Pagination = (props) => {
       </div>
       <PaginationNav
         totalRecords={sortedData.length}
-        pageLimit={pageLimit}
+        pageLimit={10}
         pageNeighbours={1}
         onPageChanged={onPageChanged}
         page={currentPage}

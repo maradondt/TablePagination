@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as routes from './routes';
 import './App.less';
-import Table from './components/Pagination/Pagination';
+import Pagination from './components/Pagination/Pagination';
 
 function App() {
   const [data, setData] = useState([]);
@@ -26,8 +26,9 @@ function App() {
         Pagination
       </header>
       <main>
-        <Table
+        <Pagination
           data={data}
+          pageLimit={10}
           loadingProcessState={loadingProcessState}
         />
       </main>

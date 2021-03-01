@@ -1,5 +1,7 @@
 import React from 'react';
 import { usePagination, LEFT_PAGE, RIGHT_PAGE } from './usePagination';
+import Button from '../ui/Button/Button';
+import styles from './PaginationNav.module.less';
 
 const PaginationNav = (props) => {
   const {
@@ -26,49 +28,48 @@ const PaginationNav = (props) => {
 
   return (
     <>
-      <nav aria-label="Table Pagination">
-        <ul className="pagination">
+      <nav aria-label="Table Pagination" className={styles['pagination-nav']}>
+        <ul className={styles['pagination-list']}>
           {pages.map((page, index) => {
             if (page === LEFT_PAGE) {
               return (
                 <li key={index} className="page-item">
-                  <button
+                  <Button
                     className="page-link"
                     aria-label="Previous"
                     onClick={handleMoveLeft}
                   >
                     <span aria-hidden="true">&laquo;</span>
-                    <span className="sr-only">Previous</span>
-                  </button>
+                  </Button>
                 </li>
               );
             }
             if (page === RIGHT_PAGE) {
               return (
                 <li key={index} className="page-item">
-                  <button
+                  <Button
                     className="page-link"
                     aria-label="Next"
                     onClick={handleMoveRight}
                   >
                     <span aria-hidden="true">&raquo;</span>
-                    <span className="sr-only">Next</span>
-                  </button>
+                  </Button>
                 </li>
               );
             }
             return (
               <li
                 key={index}
-                className={`page-item${currentPage === page ? ' active' : ''}`}
+                // className={`page-item${currentPage === page ? ' active' : ''}`}
               >
-                <button
+                <Button
                   className="page-link"
                   onClick={handleClick(page)}
                   disabled={currentPage === page}
+                  active={currentPage === page}
                 >
                   {page}
-                </button>
+                </Button>
               </li>
             );
           })}
