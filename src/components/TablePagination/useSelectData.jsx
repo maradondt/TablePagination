@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-export const useSelectData = (data, pageLimit) => {
+const useSelectData = (data, pageLimit) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const currentData = useMemo(() => {
@@ -18,3 +18,5 @@ export const useSelectData = (data, pageLimit) => {
 
   return { currentData, currentPage, onPageChanged };
 };
+
+export default useSelectData;

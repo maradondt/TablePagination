@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { usePagination, LEFT_PAGE, RIGHT_PAGE } from './usePagination';
+import PropTypes from 'prop-types';
 import { uniqueId } from 'lodash';
+import { usePagination, LEFT_PAGE, RIGHT_PAGE } from './usePagination';
 import Button from '../ui/Button/Button';
 import styles from './PaginationNav.module.less';
 
@@ -25,20 +27,22 @@ const PaginationNav = (props) => {
     onPageChanged,
     pageLimit,
     pageNeighbours,
-    page
+    page,
   );
 
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles['nav-info']}>
-          <span className="s">Page: {currentPage} / {totalPages}</span>
+          <span className="s">
+            Page: {currentPage} / {totalPages}
+          </span>
           <span className="s">Total: {totalRecords}</span>
         </div>
         <nav aria-label="Table Pagination" className={styles['pagination-nav']}>
           <ul className={styles['pagination-list']}>
-            {pages.map((page) => {
-              if (page === LEFT_PAGE) {
+            {pages.map((pageItem) => {
+              if (pageItem === LEFT_PAGE) {
                 return (
                   <li key={uniqueId()} className="page-item">
                     <Button
@@ -51,7 +55,7 @@ const PaginationNav = (props) => {
                   </li>
                 );
               }
-              if (page === RIGHT_PAGE) {
+              if (pageItem === RIGHT_PAGE) {
                 return (
                   <li key={uniqueId()} className="page-item">
                     <Button
@@ -65,16 +69,14 @@ const PaginationNav = (props) => {
                 );
               }
               return (
-                <li
-                  key={uniqueId()}
-                >
+                <li key={uniqueId()}>
                   <Button
                     className="page-link"
-                    onClick={handleClick(page)}
-                    disabled={currentPage === page}
-                    active={currentPage === page}
+                    onClick={handleClick(pageItem)}
+                    disabled={currentPage === pageItem}
+                    active={currentPage === pageItem}
                   >
-                    {page}
+                    {pageItem}
                   </Button>
                 </li>
               );
@@ -84,6 +86,14 @@ const PaginationNav = (props) => {
       </div>
     </>
   );
+};
+
+PaginationNav.propTypes = {
+  totalRecords: PropTypes.number.isRequired,
+  onPageChanged: PropTypes.func.isRequired,
+  pageLimit: PropTypes.number.isRequired,
+  pageNeighbours: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default PaginationNav;

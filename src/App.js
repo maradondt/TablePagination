@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as routes from './routes';
@@ -15,8 +16,7 @@ function App() {
         setLoadingProcessState('idle');
       })
       .catch((err) => {
-        console.log(err);
-        setLoadingProcessState('error')
+        setLoadingProcessState(err);
       });
   }, [loadingProcessState]);
 
@@ -28,7 +28,6 @@ function App() {
       <main>
         <TablePagination
           data={data}
-          pageLimit={10}
         />
       </main>
     </div>

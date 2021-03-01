@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import styles from './Button.module.less';
 import cn from 'classnames';
+import styles from './Button.module.less';
 
 const Button = (props) => {
   const {
@@ -12,12 +13,13 @@ const Button = (props) => {
   } = props;
 
   const classes = cn(styles.button, {
-    active: active,
-    disabled: disabled,
+    active,
+    disabled,
   });
 
   return (
     <button
+      type="button"
       className={classes}
       aria-label={ariaLabel}
       onClick={onClick}

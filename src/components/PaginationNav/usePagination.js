@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
 
@@ -10,7 +11,7 @@ export const usePagination = (
   onPageChanged,
   pageLimit,
   pageNeighbours,
-  page
+  page,
 ) => {
   const [currentPage, setCurrentPage] = useState(page);
   const totalPages = Math.ceil(totalRecords / pageLimit);
@@ -83,5 +84,7 @@ export const usePagination = (
     gotoPage(currentPage + pageNeighbours * 2 + 1);
   };
 
-  return { pages, currentPage, handleClick, handleMoveLeft, handleMoveRight, totalPages };
+  return {
+    pages, currentPage, handleClick, handleMoveLeft, handleMoveRight, totalPages,
+  };
 };

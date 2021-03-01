@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styles from './Input.module.less';
 
@@ -16,7 +17,7 @@ const Input = (props) => {
       type={type}
       name={name}
       id={id}
-      className={styles['input']}
+      className={styles.input}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
