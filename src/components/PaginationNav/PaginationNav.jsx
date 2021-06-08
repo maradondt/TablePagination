@@ -1,34 +1,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { uniqueId } from 'lodash';
-import { usePagination, LEFT_PAGE, RIGHT_PAGE } from './usePagination';
-import Button from '../ui/Button/Button';
-import styles from './PaginationNav.module.less';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { uniqueId } from 'lodash'
+import { usePagination, LEFT_PAGE, RIGHT_PAGE } from './usePagination'
+import Button from '../ui/Button/Button'
+import styles from './PaginationNav.module.less'
 
 const PaginationNav = (props) => {
-  const {
-    totalRecords,
-    onPageChanged,
-    pageLimit,
-    pageNeighbours,
-    page,
-  } = props;
+  const { totalRecords, onPageChanged, pageLimit, pageNeighbours, page } = props
 
-  const {
-    pages,
-    currentPage,
-    totalPages,
-    handleClick,
-    handleMoveLeft,
-    handleMoveRight,
-  } = usePagination(
-    totalRecords,
-    onPageChanged,
-    pageLimit,
-    pageNeighbours,
-    page,
-  );
+  const { pages, currentPage, totalPages, handleClick, handleMoveLeft, handleMoveRight } =
+    usePagination(totalRecords, onPageChanged, pageLimit, pageNeighbours, page)
 
   return (
     <>
@@ -45,28 +27,20 @@ const PaginationNav = (props) => {
               if (pageItem === LEFT_PAGE) {
                 return (
                   <li key={uniqueId()} className="page-item">
-                    <Button
-                      className="page-link"
-                      aria-label="Previous"
-                      onClick={handleMoveLeft}
-                    >
+                    <Button className="page-link" aria-label="Previous" onClick={handleMoveLeft}>
                       <span aria-hidden="true">&laquo;</span>
                     </Button>
                   </li>
-                );
+                )
               }
               if (pageItem === RIGHT_PAGE) {
                 return (
                   <li key={uniqueId()} className="page-item">
-                    <Button
-                      className="page-link"
-                      aria-label="Next"
-                      onClick={handleMoveRight}
-                    >
+                    <Button className="page-link" aria-label="Next" onClick={handleMoveRight}>
                       <span aria-hidden="true">&raquo;</span>
                     </Button>
                   </li>
-                );
+                )
               }
               return (
                 <li key={uniqueId()}>
@@ -79,21 +53,21 @@ const PaginationNav = (props) => {
                     {pageItem}
                   </Button>
                 </li>
-              );
+              )
             })}
           </ul>
         </nav>
       </div>
     </>
-  );
-};
+  )
+}
 
 PaginationNav.propTypes = {
   totalRecords: PropTypes.number.isRequired,
   onPageChanged: PropTypes.func.isRequired,
   pageLimit: PropTypes.number.isRequired,
   pageNeighbours: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
-};
+  page: PropTypes.number.isRequired
+}
 
-export default PaginationNav;
+export default PaginationNav

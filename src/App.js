@@ -1,24 +1,25 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import * as routes from './routes';
-import styles from './App.module.less';
-import TablePagination from './components/TablePagination/TablePagination';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import * as routes from './routes'
+import styles from './App.module.less'
+import TablePagination from './components/TablePagination/TablePagination'
 
 function App() {
-  const [data, setData] = useState([]);
-  const [loadingProcessState, setLoadingProcessState] = useState('loading');
+  const [data, setData] = useState([])
+  const [loadingProcessState, setLoadingProcessState] = useState('loading')
 
   useEffect(() => {
-    axios.get(routes.commmentsPath())
+    axios
+      .get(routes.commmentsPath())
       .then((response) => {
-        setData(response.data);
-        setLoadingProcessState('idle');
+        setData(response.data)
+        setLoadingProcessState('idle')
       })
       .catch((err) => {
-        setLoadingProcessState(err);
-      });
-  }, [loadingProcessState]);
+        setLoadingProcessState(err)
+      })
+  }, [loadingProcessState])
 
   return (
     <div className={styles.App}>
@@ -33,7 +34,7 @@ function App() {
         </a>
       </footer>
     </div>
-  );
+  )
 }
 
-export default React.memo(App);
+export default React.memo(App)

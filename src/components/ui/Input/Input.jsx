@@ -1,16 +1,9 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import styles from './Input.module.less';
+import React from 'react'
+import styles from './Input.module.less'
 
 const Input = (props) => {
-  const {
-    type = 'text',
-    name,
-    id,
-    value,
-    onChange,
-    placeholder,
-  } = props;
+  const { type = 'text', name, id, value, onChange, placeholder } = props
 
   return (
     <input
@@ -22,7 +15,7 @@ const Input = (props) => {
       value={value}
       onChange={onChange}
     />
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
