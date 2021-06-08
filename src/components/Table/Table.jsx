@@ -4,16 +4,12 @@ import _ from 'lodash';
 import cn from 'classnames';
 import styles from './Table.module.less';
 
-const Table = (props) => {
-  const {
-    data,
-    requestSort,
-    sortConfig: {
-      key,
-      direction,
-    },
-  } = props;
-
+const Table = ({
+  data,
+  requestSort,
+  sortKey,
+  sortDirection,
+}) => {
   const handleSort = (field) => () => {
     requestSort(field);
   };
@@ -25,8 +21,8 @@ const Table = (props) => {
     );
 
     const getSortedClasses = (name) => cn({
-      [styles.sorted]: name === key,
-      [styles[direction]]: name === key,
+      [styles.sorted]: name === sortKey,
+      [styles[sortDirection]]: name === sortKey,
     });
 
     return (
@@ -66,9 +62,11 @@ const Table = (props) => {
             <th>No find Data</th>
           </tr>
         </thead>
-        <tr className={styles.row} key={_.uniqueId()}>
-          <td className={styles.cell}>Please change you query</td>
-        </tr>
+        <tbody>
+          <tr className={styles.row} key={_.uniqueId()}>
+            <td className={styles.cell}>Please change you query</td>
+          </tr>
+        </tbody>
       </table>
     );
   }
@@ -84,10 +82,12 @@ const Table = (props) => {
 Table.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   requestSort: PropTypes.func.isRequired,
-  sortConfig: PropTypes.objectOf(PropTypes.shape({
-    key: PropTypes.string,
-    direction: PropTypes.string,
-  })).isRequired,
+  sortKey: PropTypes.string.isRequired,
+  sortDirection: PropTypes.string.isRequired,
+  // sortConfig: PropTypes.objectOf(PropTypes.shape({
+  //   key: PropTypes.string.isRequired,
+  //   direction: PropTypes.string.isRequired,
+  // })).isRequired,
 };
 
 export default Table;

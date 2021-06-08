@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Pagination.module.less';
+import styles from './TablePagination.module.less';
 import Table from '../Table/Table';
 import useFiltrableData from './useFiltrableData';
 import useSortableData from './useSortableData';
@@ -18,6 +18,7 @@ const TablePagination = (props) => {
   } = useFiltrableData(data);
 
   const { items: sortedData, requestSort, sortConfig } = useSortableData(filtredData);
+
   const { currentData, currentPage, onPageChanged } = useSelectData(sortedData, pageLimit);
 
   return (
@@ -36,7 +37,12 @@ const TablePagination = (props) => {
           page={currentPage}
         />
       </div>
-      <Table data={currentData} requestSort={requestSort} sortConfig={sortConfig} />
+      <Table
+        data={currentData}
+        requestSort={requestSort}
+        sortKey={sortConfig.key}
+        sortDirection={sortConfig.direction}
+      />
       <div className={styles.controlls_bottom}>
         <PaginationNav
           totalRecords={sortedData.length}
