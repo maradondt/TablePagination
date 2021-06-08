@@ -1,21 +1,15 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import cn from 'classnames';
-import styles from './Button.module.less';
+import React from 'react'
+import cn from 'classnames'
+import styles from './Button.module.less'
 
 const Button = (props) => {
-  const {
-    children,
-    onClick,
-    ariaLabel,
-    active = false,
-    disabled = false,
-  } = props;
+  const { children, onClick, ariaLabel, active = false, disabled = false } = props
 
   const classes = cn(styles.button, {
     active,
-    disabled,
-  });
+    disabled
+  })
 
   return (
     <button
@@ -27,7 +21,7 @@ const Button = (props) => {
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

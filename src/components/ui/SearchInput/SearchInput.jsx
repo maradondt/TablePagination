@@ -1,14 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import styles from './SearchInput.module.less';
-import Input from '../Input/Input';
+import React from 'react'
+import styles from './SearchInput.module.less'
+import Input from '../Input/Input'
 
 const SearchInput = (props) => {
-  const {
-    id,
-    value,
-    onChange,
-  } = props;
+  const { id, value, onChange } = props
   return (
     <div className={styles.search}>
       <span className={styles['search-icon']}>
@@ -31,7 +27,7 @@ const SearchInput = (props) => {
         onChange={onChange}
       />
     </div>
-  );
-};
+  )
+}
 
-export default SearchInput;
+export default SearchInput
